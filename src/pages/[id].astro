@@ -1,0 +1,27 @@
+---
+import BlogLayout from '../layouts/BlogLayout.astro';
+import SinglePost from '../components/SinglePost.astro';
+
+export async function getStaticPaths() {
+
+    const response: any = await fetch(`https://jsonplaceholder.typicode.com/posts/`)
+    const posts = await response.json();
+    return posts.map(post => ({
+        params: {
+            id: post.id.toString()
+        }
+    }));
+}
+
+const {id} = Astro.request.params;
+
+
+const response: any = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+const post = await response.json();
+
+
+---
+
+<BlogLayout title={post.title}>
+    <SinglePost id={id} title={post.title} body={post.body} />
+</BlogLayout>

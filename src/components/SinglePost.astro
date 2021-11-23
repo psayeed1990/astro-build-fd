@@ -1,0 +1,19 @@
+---
+import Body from '../components/Body.astro';
+import Title from '../components/Title.astro';
+
+interface Props {
+    id:string;
+    title: string;
+    body: string;
+}
+
+const {id, title, body} = Astro.props;
+
+
+---
+
+    <div class="blog-post">
+        <Title id={id} title={title} />
+        <Body body={body} />
+    </div>

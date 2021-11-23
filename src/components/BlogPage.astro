@@ -1,0 +1,17 @@
+---
+import Body from '../components/Body.astro';
+import Title from '../components/Title.astro';
+
+const response: any = await fetch(`https://jsonplaceholder.typicode.com/posts/`)
+const posts = await response.json();
+
+---
+    <div class="blog">
+        {posts.map((post: any) => (
+            <div class="blog-post"  key={post.id}>
+                <Title id={post.id} title={post.title} />
+                <Body body={post.body} />
+            </div>
+
+        ))}
+    </div>

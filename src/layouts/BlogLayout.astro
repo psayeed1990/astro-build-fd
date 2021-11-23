@@ -1,0 +1,44 @@
+---
+// ts in here
+interface Props {
+    title: string;
+}
+const {title} = Astro.props;
+---
+
+<!--Styles here-->
+
+<!--HTML here-->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <title>{title}</title>
+
+        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    
+    <link rel="stylesheet" href="/style/global.css">
+    <link rel="stylesheet" href="/style/home.css">
+
+    <style>
+        header {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+            max-width: min(100%, 68ch);
+        }
+    </style>
+</head>
+<body>
+    <main>
+    <!-- Adds a navigation bar to every page. -->
+    <header>
+        <nav>
+          <a href="/">Astro Blog</a>
+        </nav>
+    </header>
+    <!-- slot: your page content will be injected here. -->
+    <slot />
+    </main>
+  </body>
+</html>
